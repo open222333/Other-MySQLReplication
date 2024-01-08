@@ -16,6 +16,8 @@ services:
     volumes:
       - ./conf/mysql/master.cnf:/etc/my.cnf
       - ./data/master:/var/lib/mysql
+    networks:
+      - mysql_network
   slave1:
     extends:
       file: docker/docker-compose.slave.yml
@@ -36,8 +38,8 @@ services:
     volumes:
       - ./conf/mysql/slave1.cnf:/etc/my.cnf
       - ./data/slave1:/var/lib/mysql
-    depends_on:
-      - master
+    networks:
+      - mysql_network
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -50,6 +52,11 @@ services:
     environment:
       UPLOAD_LIMIT: "100M"
       APACHE_PORT: 80
+    networks:
+      - mysql_network
 
 networks:
-  <<: !include docker/networks.yml
+  mysql_network:
+    ipam:
+      config:
+        - subnet: "172.6.0.0/16"
