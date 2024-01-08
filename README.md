@@ -26,8 +26,9 @@ docker exec -ti master mysql -uroot -p
 ```
 
 ```sql
-CREATE USER 'replication'@'192.168%' IDENTIFIED BY '.wFb9A?$9*WN';
-GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.168%';
+CREATE USER 'replication'@'%' IDENTIFIED BY '.wFb9A?$9*WN';
+GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
+FLUSH PRIVILEGES;
 ```
 
 ```sql
@@ -52,4 +53,8 @@ MASTER_LOG_POS={$log position};
 
 ```sql
 START SLAVE;
+```
+
+```sql
+SHOW SLAVE STATUS\G
 ```
