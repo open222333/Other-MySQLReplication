@@ -1,0 +1,5 @@
+networks:
+  replication_network:
+    ipam:
+      config:
+        - subnet: "172.6.0.0/16"

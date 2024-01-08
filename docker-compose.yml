@@ -2,7 +2,7 @@ version: "3"
 services:
   master:
     extends:
-      file: docker-compose.master.yml
+      file: docker/docker-compose.master.yml
       service: master
     container_name: master
     hostname: master
@@ -18,7 +18,7 @@ services:
       - ./data/master:/var/lib/mysql
   slave1:
     extends:
-      file: docker-compose.slave.yml
+      file: docker/docker-compose.slave.yml
       service: slave
     container_name: slave1
     hostname: slave1
@@ -50,3 +50,6 @@ services:
     environment:
       UPLOAD_LIMIT: "100M"
       APACHE_PORT: 80
+
+networks:
+  <<: !include docker/networks.yml
