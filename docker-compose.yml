@@ -40,6 +40,8 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     hostname: phpmyadmin
+    ports:
+      - "80:80"
     volumes:
       - ./conf/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
       - ./data/phpmyadmin/:/srv/phpmyadmin/
