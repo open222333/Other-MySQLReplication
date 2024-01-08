@@ -1,16 +1,13 @@
 <?php
 $cfg['Servers'][1]['host'] = 'master';
 $cfg['Servers'][1]['port'] = '3306';
-$cfg['Servers'][1]['user'] = 'root';
-$cfg['Servers'][1]['password'] = 'masterpassword';
 
 $cfg['Servers'][2]['host'] = 'slave1';
 $cfg['Servers'][2]['port'] = '3306';
-$cfg['Servers'][2]['user'] = 'root';
-$cfg['Servers'][2]['password'] = 'slavepassword';
 
 // You can add more server configurations as needed
 // $cfg['Servers'][3]...
 
-$cfg['DefaultServer'] = 1; // Set the default server to use (in this case, server 1)
+// Set the default server to use (in this case, server 1)
+$cfg['DefaultServer'] = 1;
 ?>
