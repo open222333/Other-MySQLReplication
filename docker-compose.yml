@@ -57,6 +57,7 @@ services:
 
 networks:
   mysql_network:
+    name: mysql_network
     ipam:
       config:
         - subnet: "172.6.0.0/16"
