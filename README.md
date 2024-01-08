@@ -17,6 +17,8 @@ MySQL Master-Slave docker-compose.yml 練習
 
 [MySQL 筆記 Replication(Master-Slave 主從)](https://github.com/open222333/Other-Note/blob/main/03_%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9C%8D%E5%8B%99/DatabaseServer(%E8%B3%87%E6%96%99%E5%BA%AB%E4%BC%BA%E6%9C%8D%E5%99%A8)/MySQL/MySQL%20%E7%AD%86%E8%A8%98%20Replication(Master-Slave%20%E4%B8%BB%E5%BE%9E).md)
 
+[官方 mysql/docker-healthcheck](https://github.com/docker-library/healthcheck/blob/master/mysql/docker-healthcheck)
+
 # 用法
 
 ## master

@@ -16,6 +16,12 @@ services:
     volumes:
       - ./conf/mysql/master.cnf:/etc/my.cnf
       - ./data/master:/var/lib/mysql
+      - ./scripts/healthcheck.sh:/opt/scripts/mysql/healthcheck.sh
+    healthcheck:
+      test: ['CMD', '/opt/scripts/mysql/healthcheck.sh']
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - mysql_network
   slave1:
@@ -38,6 +44,12 @@ services:
     volumes:
       - ./conf/mysql/slave1.cnf:/etc/my.cnf
       - ./data/slave1:/var/lib/mysql
+      - ./scripts/healthcheck.sh:/opt/scripts/mysql/healthcheck.sh
+    healthcheck:
+      test: ['CMD', '/opt/scripts/mysql/healthcheck.sh']
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - mysql_network
   phpmyadmin:
