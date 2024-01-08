@@ -14,6 +14,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
+      - ./conf/mysql/master.cnf:/etc/my.cnf
       - ./data/master:/var/lib/mysql
   slave1:
     extends:
@@ -33,6 +34,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
+      - ./conf/mysql/slave1.cnf:/etc/my.cnf
       - ./data/slave1:/var/lib/mysql
     depends_on:
       - master
