@@ -1,0 +1,22 @@
+version: "3"
+services:
+  slave:
+    image: mysql:5.7
+    restart: always
+    # container_name: slave
+    # hostname: slave
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: slavepassword
+    #   MYSQL_DATABASE: mydatabase
+    #   MYSQL_USER: slaveuser
+    #   MYSQL_PASSWORD: slavepassword
+    #   MYSQL_MASTER_HOST: master
+    #   MYSQL_MASTER_PORT: 3306
+    #   MYSQL_MASTER_USER: masteruser
+    #   MYSQL_MASTER_PASSWORD: masterpassword
+    # ports:
+    #   - "3307:3306"
+    # volumes:
+    #   - ./data/slave:/var/lib/mysql
+    # depends_on:
+    #   - master

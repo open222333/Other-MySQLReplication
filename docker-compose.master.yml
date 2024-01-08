@@ -1,0 +1,16 @@
+version: "3"
+services:
+  master:
+    image: mysql:5.7
+    restart: always
+    # container_name: master
+    # hostname: master
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: masterpassword
+    #   MYSQL_DATABASE: mydatabase
+    #   MYSQL_USER: masteruser
+    #   MYSQL_PASSWORD: masterpassword
+    # ports:
+    #   - "3306:3306"
+    # volumes:
+    #   - ./data/master:/var/lib/mysql
