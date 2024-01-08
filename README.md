@@ -21,6 +21,10 @@ MySQL Master-Slave docker-compose.yml 練習
 
 ## master
 
+```bash
+docker exec -ti master mysql -uroot -p
+```
+
 ```sql
 CREATE USER 'replication'@'192.168%' IDENTIFIED BY '.wFb9A?$9*WN';
 GRANT REPLICATION SLAVE ON *.* TO 'replication'@'192.168%';
@@ -31,6 +35,10 @@ SHOW MASTER STATUS;
 ```
 
 ## slave
+
+```bash
+docker exec -ti slave1 mysql -uroot -p
+```
 
 ```sql
 CHANGE MASTER TO
