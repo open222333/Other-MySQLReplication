@@ -9,14 +9,15 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: masterpassword
       MYSQL_DATABASE: mydatabase
-      MYSQL_USER: masteruser
-      MYSQL_PASSWORD: masterpassword
+      MYSQL_USER: healthcheck_user
+      MYSQL_PASSWORD: healthcheck_password
     ports:
       - "3306:3306"
     volumes:
       - ./conf/mysql/master.cnf:/etc/my.cnf
       - ./data/master:/var/lib/mysql
       - ./scripts/healthcheck.sh:/opt/scripts/mysql/healthcheck.sh
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ['CMD', '/opt/scripts/mysql/healthcheck.sh']
       interval: 30s
@@ -32,12 +33,11 @@ services:
     hostname: slave1
     environment:
       MYSQL_ROOT_PASSWORD: slavepassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: slaveuser
-      MYSQL_PASSWORD: slavepassword
+      MYSQL_USER: healthcheck_user
+      MYSQL_PASSWORD: healthcheck_password
       MYSQL_MASTER_HOST: master
       MYSQL_MASTER_PORT: 3306
-      MYSQL_MASTER_USER: masteruser
+      MYSQL_MASTER_USER: root
       MYSQL_MASTER_PASSWORD: masterpassword
     ports:
       - "3307:3306"

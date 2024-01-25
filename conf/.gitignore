@@ -1,3 +1,4 @@
 config.ini
 config.user.inc.php
 *.cnf
+mysql_healthcheck_user.env
