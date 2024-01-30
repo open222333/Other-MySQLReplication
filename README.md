@@ -7,11 +7,11 @@ MySQL Master-Slave docker-compose.yml 練習
 ## 目錄
 
 - [Other-MySQLReplication](#other-mysqlreplication)
-	- [目錄](#目錄)
-	- [參考資料](#參考資料)
+  - [目錄](#目錄)
+  - [參考資料](#參考資料)
 - [用法](#用法)
-	- [master](#master)
-	- [slave](#slave)
+  - [master](#master)
+  - [slave](#slave)
 
 ## 參考資料
 
@@ -28,7 +28,7 @@ docker exec -ti master mysql -uroot -p
 ```
 
 ```sql
-CREATE USER 'replication'@'%' IDENTIFIED BY '.wFb9A?$9*WN';
+CREATE USER 'replication'@'%' IDENTIFIED BY 'replicationpassword';
 GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
 FLUSH PRIVILEGES;
 ```
@@ -45,10 +45,10 @@ docker exec -ti slave1 mysql -uroot -p
 
 ```sql
 CHANGE MASTER TO
-MASTER_HOST='{$master ip}',
+MASTER_HOST='master',
 MASTER_PORT=3306,
 MASTER_USER='replication',
-MASTER_PASSWORD='.wFb9A?$9*WN',
+MASTER_PASSWORD='replicationpassword',
 MASTER_LOG_FILE='{$master bin_log filename}',
 MASTER_LOG_POS={$log position};
 ```
