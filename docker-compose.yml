@@ -7,7 +7,7 @@ services:
     container_name: master
     hostname: master
     environment:
-      MYSQL_ROOT_PASSWORD: masterpassword
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mydatabase
       MYSQL_USER: healthcheck_user
       MYSQL_PASSWORD: healthcheck_password
@@ -32,13 +32,13 @@ services:
     container_name: slave1
     hostname: slave1
     environment:
-      MYSQL_ROOT_PASSWORD: slavepassword
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: healthcheck_user
       MYSQL_PASSWORD: healthcheck_password
       MYSQL_MASTER_HOST: master
       MYSQL_MASTER_PORT: 3306
       MYSQL_MASTER_USER: root
-      MYSQL_MASTER_PASSWORD: masterpassword
+      MYSQL_MASTER_PASSWORD: password
     ports:
       - "3307:3306"
     volumes:
