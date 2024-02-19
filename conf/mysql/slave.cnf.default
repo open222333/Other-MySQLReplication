@@ -31,7 +31,7 @@ symbolic-links=0
 pid-file=/var/run/mysqld/mysqld.pid
 
 server-id = 2
-log-bin = mysql-bin
+log-bin = mysql-slave-bin
 # read-only = ON
 
 [client]
