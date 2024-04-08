@@ -25,12 +25,12 @@ services:
       retries: 3
     networks:
       - mysql_network
-  slave1:
+  slave:
     extends:
       file: docker/docker-compose.slave.yml
       service: slave
-    container_name: slave1
-    hostname: slave1
+    container_name: slave
+    hostname: slave
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: healthcheck_user
@@ -42,28 +42,14 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - ./conf/mysql/slave1.cnf:/etc/my.cnf
-      - ./data/slave1:/var/lib/mysql
+      - ./conf/mysql/slave.cnf:/etc/my.cnf
+      - ./data/slave:/var/lib/mysql
       - ./scripts/healthcheck.sh:/opt/scripts/mysql/healthcheck.sh
     healthcheck:
       test: ['CMD', '/opt/scripts/mysql/healthcheck.sh']
       interval: 30s
       timeout: 10s
       retries: 3
-    networks:
-      - mysql_network
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    hostname: phpmyadmin
-    ports:
-      - "80:80"
-    volumes:
-      - ./conf/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
-      - ./data/phpmyadmin/:/srv/phpmyadmin/
-    environment:
-      UPLOAD_LIMIT: "100M"
-      APACHE_PORT: 80
     networks:
       - mysql_network
 
