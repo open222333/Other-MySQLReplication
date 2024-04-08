@@ -40,7 +40,7 @@ SHOW MASTER STATUS;
 ## slave
 
 ```bash
-docker exec -ti slave1 mysql -uroot -p
+docker exec -ti slave mysql -uroot -p
 ```
 
 ```sql
